@@ -50,9 +50,30 @@ export JAVA_OPTS="$JAVA_OPTS -DmaxYamlCodePoints=99999999"
 
 Generate the Ballerina project for the OpenAPI spec using the Ballerina Open API tool with the following commands.
 
+1. Create a new Ballerina project, naming the project as desired (e.g., custom_types, salesforce_types, etc.).
+
+```bash
+bal new custom_types
+```
+
+2. Customize the package details by editing the `Ballerina.toml` file. For instance, you can modify the [package] section as follows:
+
+```toml
+[package]
+org = "example"
+name = "salesforce.types"
+version = "0.1.0"
+```
+
+Feel free to replace "salesforce.types" with one of the suitable desired names like "custom.types" or "integration.types," or come up with your own unique package name.
+
+4. Move the OpenAPI spec into the newly created project directory and execute the following command:
+
 ```bash
 bal openapi -i oas.json --mode client --client-methods resource
 ```
+
+This will generate the Ballerina project structure, record types that correspond to the SObject definitions, and client methods based on the provided OpenAPI specification.
 
 ### Step 4: Edit the Generated Client and Push it to Local Repository
 
